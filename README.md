@@ -1,7 +1,10 @@
 # GNU Privacy Guard for Windows on ARM
 
-This script build the GnuPG 2.4.0 with the following compatibilities,
-which is suitable for `git commit` without smart cards:
+This script builds the GnuPG 2.4.0 with the following compatibilities,
+which is suitable for `git commit` without smart cards.
+More compatibilities will be add in the future (when I need it).
+
+You can download the cross compiled portable installation from the artifact of GitHub Actions.
 
 ```
         GnuPG v2.4.0 has been configured as follows:
