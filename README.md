@@ -1,6 +1,6 @@
 # GNU Privacy Guard for Windows on ARM
 
-This script build the GnuPG with the following compatibilities,
+This script build the GnuPG 2.4.0 with the following compatibilities,
 which is suitable for `git commit` without smart cards:
 
 ```
@@ -36,3 +36,8 @@ which is suitable for `git commit` without smart cards:
         TOFU support:        no
         Tor support:         only .onion
 ```
+
+## See Also
+- https://github.com/dockcross/dockcross
+- https://github.com/mstorsjo/llvm-mingw
+- https://github.com/msys2/MINGW-packages/pull/13540/files

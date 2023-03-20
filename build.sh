@@ -9,6 +9,9 @@ cd "$BUILD"
 $HOME/00-download-sources.sh
 
 SUDO=sudo
+if [[ ! -z "$CI" ]]; then
+   SUDO=
+fi 
 
 if [[ ! -x dockcross-windows-arm64 ]]; then
     $SUDO docker run --rm dockcross/windows-arm64 > ./dockcross-windows-arm64
