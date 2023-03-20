@@ -9,3 +9,4 @@ export PREFIX="$HOME/install/gnupg"
 mkdir -p "$PREFIX"
 
 $HOME/02-build-each.sh
+$HOME/03-fix-path.sh

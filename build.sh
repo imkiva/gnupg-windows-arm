@@ -21,3 +21,7 @@ cp "$HOME"/*.patch "$BUILD"
 
 # THE BIG GAME
 $SUDO ./dockcross-windows-arm64 bash /work/01-build-in-cross-env.sh
+
+# DONE
+cd "$BUILD"/install
+zip -r "$HOME"/gnupg.zip gnupg/
