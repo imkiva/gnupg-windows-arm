@@ -3,9 +3,6 @@
 set -e # exit on any error
 set -o pipefail
 
-PREFIX="$PWD/build/gnupg"
-mkdir -p "$PREFIX"
-
 for name in libgpg-error libgcrypt libassuan libksba npth pinentry; do
   cd "$name"
   make -j$(nproc) install

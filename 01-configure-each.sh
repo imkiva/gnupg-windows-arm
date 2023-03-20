@@ -3,9 +3,6 @@
 set -e # exit on any error
 set -o pipefail
 
-PREFIX="$PWD/build/gnupg"
-mkdir -p "$PREFIX"
-
 function libgpg-error() {
   cd libgpg-error
   ./configure \
