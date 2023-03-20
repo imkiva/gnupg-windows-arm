@@ -8,9 +8,16 @@ mkdir -p "$BUILD"
 cd "$BUILD"
 $HOME/00-download-sources.sh
 
+SUDO=sudo
+
 if [[ ! -x dockcross-windows-arm64 ]]; then
-    sudo docker run --rm dockcross/windows-arm64 > ./dockcross-windows-arm64
+    $SUDO docker run --rm dockcross/windows-arm64 > ./dockcross-windows-arm64
     chmod +x ./dockcross-windows-arm64
 fi
 
-./dockcross-windows-arm64 bash /work/01-build-in-cross-env.sh
+# copy scripts to the container
+cp "$HOME"/*.sh "$BUILD"
+cp "$HOME"/*.patch "$BUILD"
+
+# THE BIG GAME
+$SUDO ./dockcross-windows-arm64 bash /work/01-build-in-cross-env.sh
