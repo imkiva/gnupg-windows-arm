@@ -1,0 +1,54 @@
+From 23a21cdef44856d00dbc952035b342afa60191a0 Mon Sep 17 00:00:00 2001
+From: imkiva <imkiva@islovely.icu>
+Date: Mon, 20 Mar 2023 23:26:02 +0800
+Subject: [PATCH] fix
+
+---
+ src/setenv.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/src/setenv.c b/src/setenv.c
+index 3410b30..468db5d 100644
+--- a/src/setenv.c
++++ b/src/setenv.c
+@@ -51,7 +51,11 @@ extern int errno;
+ #if !_LIBC
+ # define __environ	environ
+ # ifndef HAVE_ENVIRON_DECL
++#  ifdef WIN32
++extern void __set_environ_ptr(char **__newptr);
++#  else
+ extern char **environ;
++#  endif
+ # endif
+ #endif
+ 
+@@ -208,8 +212,12 @@ __add_to_environ (const char *name, const char *value, const char *combined,
+ 		size * sizeof (char *));
+ 
+       new_environ[size + 1] = NULL;
+-
++#ifdef WIN32
++      last_environ = new_environ;
++      __set_environ_ptr(new_environ);
++#else
+       last_environ = __environ = new_environ;
++#endif
+     }
+   else if (replace)
+     {
+@@ -330,7 +338,11 @@ clearenv (void)
+     }
+ 
+   /* Clear the environment pointer removes the whole environment.  */
++#ifdef WIN32
++  __set_environ_ptr(NULL);
++#else
+   __environ = NULL;
++#endif
+ 
+   UNLOCK;
+ 
+-- 
+2.40.0
+
