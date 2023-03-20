@@ -28,7 +28,7 @@ function libgcrypt() {
 
 function libassuan() {
   cd libassuan
-  patch -p1 < ../libassuan-setenv.c.patch
+  patch -p1 < "$HOME/libassuan-setenv.c.patch"
   ./configure \
     --build=x86_64-pc-linux-gnu \
     --host=aarch64-w64-mingw32 \
